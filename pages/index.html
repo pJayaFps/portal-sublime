@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Aluno</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script defer src="assets/js/main.js"></script>
+    <script defer src="assets/js/bot.js"></script>
+    <script defer src="assets/js/calendario.js"></script>
+    <script defer src="assets/js/mural.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Portal do Aluno</h1>
+        <button id="modo-noturno">Modo Noturno</button>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="calendario.html">Calendário</a></li>
+            <li><a href="estudos.html">Plataformas de Estudo</a></li>
+            <li><a href="mural.html">Mural de Avisos</a></li>
+            <li><a href="perfil.html">Perfil</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="dashboard">
+            <h2>Bem-vindo ao Portal do Aluno</h2>
+            <p>Confira suas atividades e informações importantes.</p>
+            <div id="chatbot">
+                <p><strong>Bot:</strong> Como posso te ajudar?</p>
+                <input type="text" id="chat-input" placeholder="Digite sua pergunta...">
+                <button onclick="enviarPergunta()">Enviar</button>
+                <div id="chat-respostas"></div>
+            </div>
+        </section>
+        <section id="calendario">
+            <h2>Calendário Escolar</h2>
+            <div id="calendario-container"></div>
+        </section>
+        <section id="mural">
+            <h2>Mural de Avisos</h2>
+            <div id="mural-container"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Portal do Aluno</p>
+    </footer>
+</body>
+</html>
