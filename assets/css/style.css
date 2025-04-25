@@ -1,0 +1,130 @@
+:root {
+    --toastify-color-light: #fff;
+    --toastify-color-dark: #121212;
+    --toastify-color-info: #3498db;
+    --toastify-color-success: #07bc0c;
+    --toastify-color-warning: #f1c40f;
+    --toastify-color-error: #e74c3c;
+    --toastify-color-transparent: hsla(0,0%,100%,.7);
+    --toastify-icon-color-info: var(--toastify-color-info);
+    --toastify-icon-color-success: var(--toastify-color-success);
+    --toastify-icon-color-warning: var(--toastify-color-warning);
+    --toastify-icon-color-error: var(--toastify-color-error);
+    --toastify-toast-width: 320px;
+    --toastify-toast-offset: 16px;
+    --toastify-toast-top: max(var(--toastify-toast-offset),env(safe-area-inset-top));
+    --toastify-toast-right: max(var(--toastify-toast-offset),env(safe-area-inset-right));
+    --toastify-toast-left: max(var(--toastify-toast-offset),env(safe-area-inset-left));
+    --toastify-toast-bottom: max(var(--toastify-toast-offset),env(safe-area-inset-bottom));
+    --toastify-toast-background: #fff;
+    --toastify-toast-min-height: 64px;
+    --toastify-toast-max-height: 800px;
+    --toastify-toast-bd-radius: 6px;
+    --toastify-font-family: sans-serif;
+    --toastify-z-index: 9999;
+    --toastify-text-color-light: #757575;
+    --toastify-text-color-dark: #fff;
+    --toastify-text-color-info: #fff;
+    --toastify-text-color-success: #fff;
+    --toastify-text-color-warning: #fff;
+    --toastify-text-color-error: #fff;
+    --toastify-spinner-color: #616161;
+    --toastify-spinner-color-empty-area: #e0e0e0;
+    --toastify-color-progress-light: linear-gradient(90deg,#4cd964,#5ac8fa,#007aff,#34aadc,#5856d6,#ff2d55);
+    --toastify-color-progress-dark: #bb86fc;
+    --toastify-color-progress-info: var(--toastify-color-info);
+    --toastify-color-progress-success: var(--toastify-color-success);
+    --toastify-color-progress-warning: var(--toastify-color-warning);
+    --toastify-color-progress-error: var(--toastify-color-error);
+    --toastify-color-progress-bgo: 0.2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    color: rgb(24, 59, 86);
+    font-family: Roboto, Helvetica, Arial, sans-serif, Inter, Cabin;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: rgb(244, 245, 247);
+}
+
+.css-1o6f4vl {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: radial-gradient(circle at 80% 50%, rgb(215, 224, 244) 0%, transparent 20%), linear-gradient(rgb(245, 246, 253) 20%, rgb(235, 240, 248) 80%);
+}
+
+.css-1coeexk {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.css-8atqhb {
+    width: 100%;
+}
+
+.css-2qqiqk {
+    display: flex;
+    height: 10px;
+    width: 100%;
+}
+
+.css-1ympabi {
+    flex: 1 1 0%;
+    height: 100%;
+    border-bottom: 2px solid rgb(48, 145, 177);
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.css-tvtxz {
+    flex: 1 1 0%;
+    height: 100%;
+    border-bottom: 2px dotted rgb(48, 145, 177);
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.css-1uu0zo6 {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 16px;
+    gap: 32px;
+}
+
+.css-105hexj {
+    margin-top: 8px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    justify-self: center;
+}
+
+.css-b933ss {
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.css-7pqxxt {
+    margin: 0px;
+    line-height: 1.167;
+    font-family: Cabin;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgb(96, 104, 120);
+}
