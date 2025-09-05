@@ -1,52 +1,414 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal do Aluno</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <script defer src="assets/js/main.js"></script>
-    <script defer src="assets/js/bot.js"></script>
-    <script defer src="assets/js/calendario.js"></script>
-    <script defer src="assets/js/mural.js"></script>
-</head>
-<body>
-    <header>
-        <h1>Portal do Aluno</h1>
-        <button id="modo-noturno">Modo Noturno</button>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="calendario.html">Calendário</a></li>
-            <li><a href="estudos.html">Plataformas de Estudo</a></li>
-            <li><a href="mural.html">Mural de Avisos</a></li>
-            <li><a href="perfil.html">Perfil</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="dashboard">
-            <h2>Bem-vindo ao Portal do Aluno</h2>
-            <p>Confira suas atividades e informações importantes.</p>
-            <div id="chatbot">
-                <p><strong>Bot:</strong> Como posso te ajudar?</p>
-                <input type="text" id="chat-input" placeholder="Digite sua pergunta...">
-                <button onclick="enviarPergunta()">Enviar</button>
-                <div id="chat-respostas"></div>
-            </div>
-        </section>
-        <section id="calendario">
-            <h2>Calendário Escolar</h2>
-            <div id="calendario-container"></div>
-        </section>
-        <section id="mural">
-            <h2>Mural de Avisos</h2>
-            <div id="mural-container"></div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Portal do Aluno</p>
-    </footer>
-</body>
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal do Professor</title>
+    <meta name="description" content="Sistema de Gestão Educacional para Professores" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Feather Icons (similar to Lucide) -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+</head>
+
+<body>
+    <div id="app" class="min-h-screen bg-gray-50">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <div class="header-logo">
+                    <div class="logo-icon">🎓</div>
+                    <div>
+                        <h1>Portal do Professor</h1>
+                        <p>Sistema de Gestão Educacional</p>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <button class="header-button notification-button">
+                        <i data-feather="bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+
+                    <button class="header-button message-button">
+                        <i data-feather="message-square"></i>
+                        <span class="badge">2</span>
+                    </button>
+
+                    <div class="user-info">
+                        <div class="user-details">
+                            <p class="user-name">Prof. Maria Silva</p>
+                            <p class="user-role">Matemática • 9º Ano</p>
+                        </div>
+                        <button class="header-button">
+                            <i data-feather="user"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <div class="content-wrapper">
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-button">
+                    <button id="mobileMenuToggle">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+
+                <!-- Navigation Sidebar -->
+                <aside class="navigation" id="navigationSidebar">
+                    <nav class="nav-menu">
+                        <button class="nav-item active" data-tab="dashboard">
+                            <i data-feather="home"></i>
+                            Dashboard
+                        </button>
+                        <button class="nav-item" data-tab="grades">
+                            <i data-feather="file-text"></i>
+                            Notas
+                        </button>
+                        <button class="nav-item" data-tab="communications">
+                            <i data-feather="message-square"></i>
+                            Comunicados
+                        </button>
+                        <button class="nav-item" data-tab="students">
+                            <i data-feather="users"></i>
+                            Alunos
+                        </button>
+                        <button class="nav-item" data-tab="settings">
+                            <i data-feather="settings"></i>
+                            Configurações
+                        </button>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="main-content">
+                    <!-- Dashboard Tab Content (default active) -->
+                    <div class="tab-content" id="dashboard">
+                        <!-- Welcome Section -->
+                        <div class="welcome-section">
+                            <div>
+                                <h2>Bem-vinda, Prof. Maria Silva! 👋</h2>
+                                <p>Hoje é quinta-feira, 23 de maio de 2024</p>
+                                <p>Você tem 3 comunicados não lidos e 2 prazos próximos</p>
+                            </div>
+                            <div class="welcome-icon">
+                                <i data-feather="trending-up"></i>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <p class="stat-title">Turmas Ativas</p>
+                                    <p class="stat-value">6</p>
+                                </div>
+                                <div class="stat-icon blue">
+                                    <i data-feather="users"></i>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <p class="stat-title">Comunicados Pendentes</p>
+                                    <p class="stat-value">3</p>
+                                </div>
+                                <div class="stat-icon orange">
+                                    <i data-feather="message-square"></i>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <p class="stat-title">Notas para Lançar</p>
+                                    <p class="stat-value">12</p>
+                                </div>
+                                <div class="stat-icon green">
+                                    <i data-feather="file-text"></i>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <p class="stat-title">Próximas Aulas</p>
+                                    <p class="stat-value">8</p>
+                                </div>
+                                <div class="stat-icon purple">
+                                    <i data-feather="calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Two Column Grid -->
+                        <div class="two-column-grid">
+                            <!-- Recent Communications -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i data-feather="message-square"></i>
+                                        <span>Comunicados Recentes</span>
+                                    </h3>
+                                    <p class="card-description">Últimas mensagens da gestão escolar</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="comms-list">
+                                        <div class="comm-item">
+                                            <div class="comm-indicator unread"></div>
+                                            <div class="comm-details">
+                                                <h4>Reunião Pedagógica - Setembro</h4>
+                                                <div class="comm-meta">
+                                                    <span class="badge red">alta</span>
+                                                    <span class="date">2024-05-25</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="comm-item">
+                                            <div class="comm-indicator unread"></div>
+                                            <div class="comm-details">
+                                                <h4>Nova Metodologia de Avaliação</h4>
+                                                <div class="comm-meta">
+                                                    <span class="badge blue">media</span>
+                                                    <span class="date">2024-05-24</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="comm-item">
+                                            <div class="comm-indicator read"></div>
+                                            <div class="comm-details">
+                                                <h4>Calendário de Provas - 2º Bimestre</h4>
+                                                <div class="comm-meta">
+                                                    <span class="badge red">alta</span>
+                                                    <span class="date">2024-05-23</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline full-width">Ver Todos os Comunicados</button>
+                                </div>
+                            </div>
+
+                            <!-- Upcoming Tasks -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i data-feather="clock"></i>
+                                        <span>Tarefas Pendentes</span>
+                                    </h3>
+                                    <p class="card-description"></p>e atividades importantes</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="tasks-list">
+                                        <div class="task-item">
+                                            <i data-feather="check-square" class="task-icon"></i>
+                                            <div class="task-details">
+                                                <p>Lançar notas do 9º A - Matemática</p>
+                                                <div class="task-meta">
+                                                    <span class="badge outline">2024-05-28</span>
+                                                    <span class="badge gray">pendente</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item">
+                                            <i data-feather="check-square" class="task-icon"></i>
+                                            <div class="task-details">
+                                                <p>Entregar planejamento mensal</p>
+                                                <div class="task-meta">
+                                                    <span class="badge outline">2024-05-30</span>
+                                                    <span class="badge gray">pendente</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item urgent">
+                                            <i data-feather="check-square" class="task-icon"></i>
+                                            <div class="task-details">
+                                                <p>Confirmar presença na reunião</p>
+                                                <div class="task-meta">
+                                                    <span class="badge outline">2024-05-2</span>
+                                                    <span class="badge red">urgente</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline full-width">Ver Todas as Tarefas</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grades Tab Content -->
+                    <div class="tab-content hidden" id="grades">
+                        <div class="page-header">
+                            <div>
+                                <h2>Lançamento de Notas</h2>
+                                <p>Registre e edite as notas dos seus alunos</p>
+                            </div>
+                            <div class="header-actions">
+                                <button class="btn btn-outline">
+                                    <i data-feather="upload"></i>
+                                    Importar CSV
+                                </button>
+                                <button class="btn btn-outline">
+                                    <i data-feather="download"></i>
+                                    Exportar PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Filters -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Filtros</h3>
+                                <p class="card-description">Selecione a turma, disciplina e período para lançar as notas
+                                </p>
+                            </div>
+                            <div class="card-content">
+                                <div class="filters-grid">
+                                    <div class="filter-item">
+                                        <label>Turma</label>
+                                        <select id="classSelect" class="select-input">
+                                            <option value="" disabled selected>Selecione a turma</option>
+                                            <option value="9a">9º Ano A</option>
+                                            <option value="9b">9º Ano B</option>
+                                            <option value="8a">8º Ano A</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-item">
+                                        <label>Disciplina</label>
+                                        <select id="subjectSelect" class="select-input">
+                                            <option value="" disabled selected>Selecione a disciplina</option>
+                                            <option value="math">Matemática</option>
+                                            <option value="science">Ciências</option>
+                                            <option value="history">História</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-item">
+                                        <label>Período</label>
+                                        <select id="periodSelect" class="select-input">
+                                            <option value="" disabled selected>Selecione o período</option>
+                                            <option value="1b">1º Bimestre</option>
+                                            <option value="2b">2º Bimestre</option>
+                                            <option value="3b">3º Bimestre</option>
+                                            <option value="4b">4º Bimestre</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grades Table (hidden by default, shown when selections are made) -->
+                        <div class="card hidden" id="gradesTable">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i data-feather="file-text"></i>
+                                    <span id="gradesTableTitle">Notas</span>
+                                </h3>
+                                <p class="card-description" id="gradesTableSubtitle"></p>
+                            </div>
+                            <div class="card-content">
+                                <div class="grades-table">
+                                    <div class="grades-header">
+                                        <div class="student-col">Aluno</div>
+                                        <div class="current-grade-col">Nota Atual</div>
+                                        <div class="new-grade-col">Nova Nota</div>
+                                        <div class="status-col">Status</div>
+                                    </div>
+
+                                    <div class="grades-body" id="gradesTableBody">
+                                        <!-- Students will be added here by JavaScript -->
+                                    </div>
+                                </div>
+
+                                <div class="grades-footer">
+                                    <div class="grades-stats">
+                                        <span class="stats-count">5 alunos</span> • Média da turma: <span
+                                            class="stats-average">8.1</span>
+                                    </div>
+                                    <div class="grades-actions">
+                                        <button class="btn btn-outline">Cancelar</button>
+                                        <button class="btn btn-primary">
+                                            <i data-feather="save"></i>
+                                            Salvar Notas
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Communications Tab Content -->
+                    <div class="tab-content hidden" id="communications">
+                        <div class="page-header">
+                            <div>
+                                <h2>Comunicados</h2>
+                                <p>Central de comunicações da gestão escolar</p>
+                            </div>
+                            <div>
+                                <span class="badge gray">3 não lidos</span>
+                            </div>
+                        </div>
+
+                        <!-- Filters -->
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="comms-filters">
+                                    <div class="search-container">
+                                        <i data-feather="search" class="search-icon"></i>
+                                        <input type="text" placeholder="Buscar comunicados..." id="commSearch"
+                                            class="search-input" />
+                                    </div>
+
+                                    <div class="filter-select">
+                                        <select id="categoryFilter" class="select-input">
+                                            <option value="all">Todas as categorias</option>
+                                            <option value="reuniao">Reuniões</option>
+                                            <option value="informativo">Informativos</option>
+                                            <option value="calendario">Calendário</option>
+                                            <option value="sistema">Sistema</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-select">
+                                        <select id="statusFilter" class="select-input">
+                                            <option value="all">Todos</option>
+                                            <option value="unread">Não lidos</option>
+                                            <option value="read">Lidos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Communications List -->
+                        <div class="comms-container" id="commsList">
+                            <!-- Communications will be added here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Students Tab Content -->
+                    <div class="tab-content hidden" id="students">
+                        <div class="placeholder-content">
+                            <p>Módulo de Alunos em desenvolvimento</p>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab Content -->
+                    <div class="tab-content hidden" id="settings">
+                        <div class="placeholder-content">
+                            <p>Configurações em desenvolvimento</p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+</body>
 
 </html>
